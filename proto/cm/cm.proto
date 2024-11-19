@@ -1,0 +1,51 @@
+syntax="proto3";
+
+package ContactManager;
+
+option go_package = "dang.cm.v1;cmv1";
+
+service ContactManager {
+  rpc CreateContact(CreateContactRequest) returns (CreateContactResponse);
+  rpc GetContactByName(GetContactByNameRequest) returns (GetContactResponse);
+  rpc GetContactByEmail(GetContactByEmailRequest) returns (GetContactResponse);
+  rpc GetContactByPhone(GetContactByPhoneRequest) returns (GetContactResponse);
+  rpc DeleteContact(DeleteContactRequest) returns (DeleteContactResponse);
+}
+
+message CreateContactRequest {
+  string name = 1;
+  string email = 2;
+  string phone = 3;
+}
+
+message CreateContactResponse {
+  int64 id = 1;
+  bool success = 2;
+}
+
+message GetContactByNameRequest {
+  string name = 1;
+}
+
+message GetContactByEmailRequest {
+  string email = 1;
+}
+
+message GetContactByPhoneRequest {
+  string phone = 1;
+}
+
+message GetContactResponse {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+  string phone = 4;
+}
+
+message DeleteContactRequest {
+  int64 id = 1;
+}
+
+message DeleteContactResponse {
+  bool success = 1;
+}
