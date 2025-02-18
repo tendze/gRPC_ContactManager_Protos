@@ -9,6 +9,7 @@ service ContactManager {
   rpc GetContactByName(GetContactByNameRequest) returns (GetContactResponse);
   rpc GetContactByEmail(GetContactByEmailRequest) returns (GetContactResponse);
   rpc GetContactByPhone(GetContactByPhoneRequest) returns (GetContactResponse);
+  rpc GetContactById(GetContactByIdRequest) returns (GetContactResponse);
   rpc DeleteContact(DeleteContactRequest) returns (DeleteContactResponse);
 }
 
@@ -33,6 +34,10 @@ message GetContactByEmailRequest {
 
 message GetContactByPhoneRequest {
   string phone = 1;
+}
+
+message GetContactByIdRequest {
+  int64 int = 1;
 }
 
 message GetContactResponse {
